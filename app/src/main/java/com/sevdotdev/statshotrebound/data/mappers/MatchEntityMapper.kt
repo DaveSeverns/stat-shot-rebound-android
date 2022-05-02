@@ -16,7 +16,7 @@ internal fun Match.toEntity(): MatchEntity {
         current_period = currentPeriod ?: "none",
         custom_mercy_rule = customMercyRule,
         type = type,
-        id = UUID.randomUUID().toString()
+        id = this.hashCode().toString()
     )
 }
 

@@ -17,6 +17,6 @@ getAllMatches: SELECT  * FROM matchEntity ORDER BY id DESC;
 
 getMatchById: SELECT * FROM matchEntity WHERE id = :id;
 
-insertMatch: INSERT OR ABORT
+insertMatch: INSERT OR IGNORE
     INTO matchEntity
     VALUES ? ;

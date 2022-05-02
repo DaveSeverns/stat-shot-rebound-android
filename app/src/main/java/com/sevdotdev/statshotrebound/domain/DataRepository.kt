@@ -7,4 +7,5 @@ interface DataRepository<D> {
     suspend fun getAll(getKey: String?= null): Flow<List<D>>
     suspend fun save(dataItem: D)
     suspend fun saveAll(dataItems: List<D>)
+    suspend fun retrieveFromServer()
 }

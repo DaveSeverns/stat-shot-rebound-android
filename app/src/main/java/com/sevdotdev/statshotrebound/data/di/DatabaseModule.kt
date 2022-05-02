@@ -9,6 +9,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import tables.MatchEntityQueries
+import tables.PlayerEntityQueries
+import tables.PlayerInMatchEntityQueries
+import tables.StatsEntityQueries
 import javax.inject.Singleton
 
 @Module
@@ -28,6 +31,16 @@ object DatabaseModule {
 
     @Provides
     fun matchEntityQueries(dataBase: StatsShotDataBase): MatchEntityQueries = dataBase.matchEntityQueries
+
+    @Provides
+    fun playerInMatchQueries(dataBase: StatsShotDataBase): PlayerInMatchEntityQueries = dataBase.playerInMatchEntityQueries
+
+    @Provides
+    fun playerEntityQueries(dataBase: StatsShotDataBase): PlayerEntityQueries = dataBase.playerEntityQueries
+
+    @Provides
+    fun statsEntityQueries(dataBase: StatsShotDataBase): StatsEntityQueries = dataBase.statsEntityQueries
+
 }
 
 private const val DB_NAME = "statsshot.db"

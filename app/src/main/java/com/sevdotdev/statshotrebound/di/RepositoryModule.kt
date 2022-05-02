@@ -1,7 +1,8 @@
 package com.sevdotdev.statshotrebound.di
 
-import com.sevdotdev.statshotrebound.data.datasource.MatchDataSource
+import com.sevdotdev.statshotrebound.data.datasource.DataSource
 import com.sevdotdev.statshotrebound.data.datasource.impl.SqlDelightMatchDataSource
+import com.sevdotdev.statshotrebound.data.network.entities.MatchJson
 import com.sevdotdev.statshotrebound.data.repositories.MatchDataRepository
 import com.sevdotdev.statshotrebound.domain.DataRepository
 import com.sevdotdev.statshotrebound.domain.model.Match
@@ -18,5 +19,5 @@ object RepositoryModule {
         matchDataRepository
 
     @Provides
-    fun matchDataSource(dataSource: SqlDelightMatchDataSource): MatchDataSource = dataSource
+    fun matchDataSource(dataSource: SqlDelightMatchDataSource): DataSource<MatchJson, Match> = dataSource
 }
