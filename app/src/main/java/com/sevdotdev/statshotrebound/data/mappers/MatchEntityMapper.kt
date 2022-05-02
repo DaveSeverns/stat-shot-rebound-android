@@ -7,6 +7,7 @@ import tables.MatchEntity
 import java.util.*
 
 typealias DomainMatch = com.sevdotdev.statshotrebound.domain.model.Match
+
 internal fun Match.toEntity(): MatchEntity {
     return MatchEntity(
         arena = arena ?: "",
@@ -16,7 +17,7 @@ internal fun Match.toEntity(): MatchEntity {
         current_period = currentPeriod ?: "none",
         custom_mercy_rule = customMercyRule,
         type = type,
-        id = this.hashCode().toString()
+        id = UUID.randomUUID().toString()
     )
 }
 
