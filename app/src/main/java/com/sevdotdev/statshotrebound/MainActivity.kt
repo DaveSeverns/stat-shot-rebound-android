@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.sevdotdev.statshotrebound.ui.screens.OverViewScreenBuilder
+import com.sevdotdev.statshotrebound.ui.screens.overview.OverViewScreenBuilder
 import com.sevdotdev.statshotrebound.ui.theme.StatShotReboundTheme
 import dagger.hilt.android.AndroidEntryPoint
 

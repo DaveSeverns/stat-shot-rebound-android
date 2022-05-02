@@ -1,7 +1,10 @@
-package com.sevdotdev.statshotrebound.ui.screens
+package com.sevdotdev.statshotrebound.ui.screens.overview
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
@@ -12,10 +15,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.sevdotdev.statshotrebound.domain.model.Match
 import com.sevdotdev.statshotrebound.domain.model.UserInfo
-import com.sevdotdev.statshotrebound.ui.screens.overview.MatchViewItem
-import com.sevdotdev.statshotrebound.ui.screens.overview.MatchViewState
-import com.sevdotdev.statshotrebound.ui.screens.overview.OverViewViewModel
+import com.sevdotdev.statshotrebound.ui.state.ComposeState
+import com.sevdotdev.statshotrebound.ui.state.ComposeState.Loading
 
 @Composable
 fun OverViewScreenBuilder(
@@ -24,16 +28,20 @@ fun OverViewScreenBuilder(
     val userInfo = viewModel.userStateInfo.collectAsState()
     val userStats = viewModel.recentMatchViewState.collectAsState()
 
-    when (val info = userInfo.value) {
-        UserInfo.NO_USER_IDENTIFIED_YET -> {
-            RegisterPlayerInfoDialog(onInfoAdded = {
-                viewModel.updatePlayerInfo(it.text)
-            })
-        }
-        else -> {
-            RecentMatchList(state = userStats.value)
+    Column(Modifier.fillMaxSize()) {
+        when(userStats.value) {
+            is Loading -> {
+                LinearProgressIndicator(
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            else -> {
+                RecentMatchList(state = userStats.value)
+            }
         }
     }
+
+
 
 }
 
@@ -46,6 +54,7 @@ fun RecentMatchList(
         state.payload?.let { list ->
             items(list){
                 MatchViewItem(matchState = it)
+                Divider(color = MaterialTheme.colors.primary)
             }
         }
     }

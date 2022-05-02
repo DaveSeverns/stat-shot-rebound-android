@@ -4,6 +4,7 @@ data class Match(
     val metaData: MatchMetaData = MatchMetaData(),
     val homeTeamData: TeamInMatch = TeamInMatch.Home(),
     val awayTeamData: TeamInMatch = TeamInMatch.Away(),
+    val datePlayed: String,
 ) {
     val winner: TeamInMatch
         get() = homeTeamData.takeIf { home ->

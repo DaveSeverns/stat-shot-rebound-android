@@ -1,6 +1,8 @@
 import java.lang.Boolean;
+import java.util.Date;
 
 CREATE TABLE matchEntity (
+    id TEXT NOT NULL UNIQUE PRIMARY KEY,
     arena TEXT NOT NULL,
     away_score INTEGER DEFAULT 0,
     home_score INTEGER DEFAULT 0,
@@ -8,7 +10,7 @@ CREATE TABLE matchEntity (
     periods_enabled INTEGER AS Boolean DEFAULT 0,
     custom_mercy_rule TEXT DEFAULT "0",
     current_period TEXT NOT NULL,
-    id TEXT NOT NULL UNIQUE PRIMARY KEY
+    date_played INTEGER AS Date NOT NULL
 );
 
 selectLastInsertedRowId: SELECT id FROM matchEntity ORDER BY rowid DESC LIMIT 1;
