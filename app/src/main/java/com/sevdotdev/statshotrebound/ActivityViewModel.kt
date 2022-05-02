@@ -15,7 +15,7 @@ class ActivityViewModel @Inject constructor(private val dataManager: DataManager
             withContext(Dispatchers.IO){
                 dataManager.updateDataFromServer()
             }
-            delay(10000)
+            delay(300000)
         }
     }
 }
