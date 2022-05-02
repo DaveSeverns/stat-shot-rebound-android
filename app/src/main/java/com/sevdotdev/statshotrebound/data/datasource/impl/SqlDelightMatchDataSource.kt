@@ -63,7 +63,12 @@ class SqlDelightMatchDataSource @Inject constructor(
     }
 
 
-    override suspend fun get(key: String?): Match {
-        TODO("Not yet implemented")
+    override suspend fun get(key: String?): Match? {
+        key?.let {
+            return matchEntityQueries.getMatchById(it).executeAsOneOrNull()?.toDomain()
+        }
+        return null
     }
+
+
 }
