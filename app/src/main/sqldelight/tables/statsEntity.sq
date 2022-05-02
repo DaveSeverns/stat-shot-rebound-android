@@ -1,0 +1,29 @@
+CREATE TABLE statsEntity (
+    id TEXT NOT NULL UNIQUE PRIMARY KEY ,
+    player_id TEXT ,
+    match_id TEXT,
+    assists  REAL NOT NULL DEFAULT 0.0,
+    blocks REAL NOT NULL DEFAULT 0.0,
+    conceded_goals REAL NOT NULL DEFAULT 0.0,
+    contributed_goals REAL NOT NULL DEFAULT 0.0,
+    faceoffs_lost REAL NOT NULL DEFAULT 0.0,
+    faceoffs_won REAL NOT NULL DEFAULT 0.0,
+    game_winning_goals REAL NOT NULL DEFAULT 0.0,
+    games_played REAL NOT NULL DEFAULT 0.0,
+    goals REAL NOT NULL DEFAULT 0.0,
+    losses REAL NOT NULL DEFAULT 0.0,
+    passes REAL NOT NULL DEFAULT 0.0,
+    possession_time_sec REAL NOT NULL DEFAULT 0.0,
+    post_hits REAL NOT NULL DEFAULT 0.0,
+    primary_assists REAL NOT NULL DEFAULT 0.0,
+    saves REAL NOT NULL DEFAULT 0.0,
+    score REAL NOT NULL DEFAULT 0.0,
+    shots REAL NOT NULL DEFAULT 0.0,
+    shutouts REAL NOT NULL DEFAULT 0.0,
+    shutouts_against REAL NOT NULL DEFAULT 0.0,
+    takeaways REAL NOT NULL DEFAULT 0.0,
+    turnovers REAL NOT NULL DEFAULT 0.0,
+    wins REAL NOT NULL DEFAULT 0.0
+);
+
+insertStats: INSERT INTO statsEntity VALUES ?;

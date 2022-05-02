@@ -1,0 +1,16 @@
+CREATE TABLE playerInMatchEntity (
+    player_id TEXT NOT NULL,
+    match_id TEXT NOT NULL ,
+    player_team TEXT NOT NULL DEFAULT "Home"
+);
+
+insertPlayerInMatch: INSERT INTO playerInMatchEntity VALUES ?;
+
+selectByMatchId: SELECT * FROM playerInMatchEntity
+    WHERE match_id = :matchId;
+
+selectByPlayerId: SELECT * FROM playerInMatchEntity
+    WHERE player_id = :playerId;
+
+selectByPlayerOnTeam: SELECT * FROM playerInMatchEntity
+    WHERE player_id = :playerId AND player_team = :playerTeam;

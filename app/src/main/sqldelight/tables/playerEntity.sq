@@ -1,0 +1,9 @@
+CREATE TABLE playerEntity (
+    player_id TEXT NOT NULL UNIQUE PRIMARY KEY,
+    player_name TEXT NOT NULL DEFAULT "anonymous"
+);
+
+insertPlayer: INSERT OR REPLACE INTO playerEntity VALUES ?;
+
+getPlayerNameById: SELECT player_name FROM playerEntity
+    WHERE player_id = :playerId;

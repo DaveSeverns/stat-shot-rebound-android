@@ -12,7 +12,7 @@ data class UserInfo(
     companion object {
         val NO_USER_IDENTIFIED_YET = UserInfo(
             "Slapper" + System.currentTimeMillis()/1000 * Math.random(),
-            ""
+            "5036"
         )
     }
 }

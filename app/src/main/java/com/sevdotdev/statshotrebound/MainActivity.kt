@@ -16,7 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.sevdotdev.statshotrebound.data.network.MatchService
+import com.sevdotdev.statshotrebound.ui.screens.OverViewScreenBuilder
 import com.sevdotdev.statshotrebound.ui.theme.StatShotReboundTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -39,14 +41,7 @@ class MainActivity : ComponentActivity() {
                         .padding(4.dp),
                     color = MaterialTheme.colors.background
                 ) {
-                    val names = listOf(
-                        "Kendall", "Roman", "Shiv", "Marcia", "Connor"
-                    )
-
-                    Greeting(
-                        "Android", names = names
-                    )
-
+                    OverViewScreenBuilder(viewModel = hiltViewModel())
                 }
             }
         }

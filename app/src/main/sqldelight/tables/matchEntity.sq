@@ -1,0 +1,22 @@
+import java.lang.Boolean;
+
+CREATE TABLE matchEntity (
+    arena TEXT NOT NULL,
+    away_score INTEGER DEFAULT 0,
+    home_score INTEGER DEFAULT 0,
+    type TEXT,
+    periods_enabled INTEGER AS Boolean DEFAULT 0,
+    custom_mercy_rule TEXT DEFAULT "0",
+    current_period TEXT NOT NULL,
+    id TEXT NOT NULL UNIQUE PRIMARY KEY
+);
+
+selectLastInsertedRowId: SELECT id FROM matchEntity ORDER BY rowid DESC LIMIT 1;
+
+getAllMatches: SELECT  * FROM matchEntity ORDER BY id DESC;
+
+getMatchById: SELECT * FROM matchEntity WHERE id = :id;
+
+insertMatch: INSERT OR ABORT
+    INTO matchEntity
+    VALUES ? ;
